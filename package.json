@@ -1,0 +1,14 @@
+{
+  "name": "graphql-api-profe",
+  "version": "1.0.0",
+  "description": "API GraphQL implementada con Apollo Server",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@apollo/server": "^4.10.0",
+    "graphql": "^16.8.1"
+  }
+}
