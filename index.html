@@ -1,19 +1,18 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-bs-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mariscos "Mar Azul" - Pescados y Mariscos Preparados</title>
 
-  <!-- 1. Bootstrap CSS Local (con CDN de respaldo) -->
+  <!-- Bootstrap CSS Local (con CDN de respaldo) -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 
-  <!-- Bootstrap Icons para la iconografía náutica -->
+  <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
   <style>
-    /* Variables de la paleta exacta del boceto */
     :root {
       --color-navbar: #2362A1;
       --color-cuerpo: #121212;
@@ -24,11 +23,15 @@
 
     body {
       background-color: var(--color-cuerpo);
-      color: var(--color-letras);
+      color: var(--color-letras) !important;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
 
-    /* Navbar según boceto: #2362A1 */
+    /* Asegurar que todos los párrafos y textos generales sean legibles */
+    p, span, h1, h2, h3, h4, h5, h6, label {
+      color: var(--color-letras);
+    }
+
     .bg-mar-azul {
       background-color: var(--color-navbar) !important;
     }
@@ -44,15 +47,19 @@
       background-color: rgba(255, 255, 255, 0.18);
     }
 
-    /* Tarjetas y contenedores oscuros */
     .card-dark {
-      background-color: var(--color-tarjeta);
+      background-color: var(--color-tarjeta) !important;
       border: 1px solid var(--color-borde);
       border-radius: 1rem;
-      color: var(--color-letras);
+      color: #ffffff !important;
     }
 
-    /* Ajustes visuales para el carrusel de Bootstrap con tus fotos */
+    .card-dark a, 
+    .card-dark button, 
+    .card-dark span {
+      color: #ffffff !important;
+    }
+
     .carousel-item {
       height: 480px;
       background-color: #000;
@@ -73,21 +80,19 @@
       backdrop-filter: blur(4px);
     }
 
-    /* Botones primarios del color de la marca */
     .btn-mar-azul {
-      background-color: var(--color-navbar);
-      border-color: var(--color-navbar);
-      color: #fff;
+      background-color: var(--color-navbar) !important;
+      border-color: var(--color-navbar) !important;
+      color: #fff !important;
       font-weight: 600;
       border-radius: 0.5rem;
     }
     .btn-mar-azul:hover {
-      background-color: #1a4a7a;
-      border-color: #1a4a7a;
-      color: #fff;
+      background-color: #1a4a7a !important;
+      border-color: #1a4a7a !important;
+      color: #fff !important;
     }
 
-    /* Plano de disponibilidad de mesas */
     .mesa-btn {
       background-color: #161616;
       border: 1px solid var(--color-borde);
@@ -100,31 +105,35 @@
     .mesa-btn:hover:not(.ocupada) {
       border-color: var(--color-navbar);
       background-color: rgba(35, 98, 161, 0.2);
+      color: #fff;
     }
     .mesa-btn.seleccionada {
       background-color: var(--color-navbar) !important;
       border-color: #ffffff !important;
       box-shadow: 0 0 12px rgba(35, 98, 161, 0.8);
+      color: #fff;
     }
     .mesa-btn.ocupada {
       background-color: #2a1515;
       border-color: #5c1d1d;
-      color: #777;
+      color: #999;
       cursor: not-allowed;
     }
 
-    /* Inputs oscuros */
     .form-control-dark, .form-select-dark {
       background-color: #121212 !important;
       border: 1px solid var(--color-borde) !important;
       color: #ffffff !important;
     }
+    .form-control-dark::placeholder {
+      color: #888888 !important;
+    }
     .form-control-dark:focus, .form-select-dark:focus {
       border-color: var(--color-navbar) !important;
       box-shadow: 0 0 0 0.25rem rgba(35, 98, 161, 0.25) !important;
+      color: #ffffff !important;
     }
 
-    /* Acordeón oscuro para FAQ */
     .accordion-dark .accordion-item {
       background-color: #161616;
       border: 1px solid var(--color-borde);
@@ -134,37 +143,45 @@
     }
     .accordion-dark .accordion-button {
       background-color: #161616;
-      color: #fff;
+      color: #ffffff !important;
       font-weight: 600;
       box-shadow: none;
     }
     .accordion-dark .accordion-button:not(.collapsed) {
       background-color: var(--color-navbar);
-      color: #fff;
+      color: #ffffff !important;
     }
     .accordion-dark .accordion-body {
       background-color: #1b1b1b;
-      color: #ccc;
+      color: #e0e0e0 !important;
+    }
+
+    /* Sobrescribir utilidades de bootstrap con tonos opacos */
+    .text-secondary-emphasis {
+      color: #e4e6eb !important;
+    }
+    .text-secondary {
+      color: #b0b3b8 !important;
+    }
+    .text-light-subtle {
+      color: #f1f1f1 !important;
     }
   </style>
 </head>
 <body>
 
-  <!-- NAVBAR: Presente en todas las páginas (#2362A1) -->
+  <!-- NAVBAR -->
   <header>
     <nav class="navbar navbar-expand-lg bg-mar-azul sticky-top shadow-sm py-3">
       <div class="container">
-        <!-- Logo -->
         <a class="navbar-brand d-flex items-center text-white fw-bold fs-4 m-0" href="#inicio">
           <i class="bi bi-water me-2"></i> MAR AZUL
         </a>
 
-        <!-- Botón responsive móvil de Bootstrap -->
         <button class="navbar-toggler border-white text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContenido" aria-controls="navbarContenido" aria-expanded="false" aria-label="Menu">
           <i class="bi bi-list fs-2 text-white"></i>
         </button>
 
-        <!-- Menú de opciones -->
         <div class="collapse navbar-collapse justify-content-end" id="navbarContenido">
           <ul class="navbar-nav gap-2 mt-3 mt-lg-0">
             <li class="nav-item">
@@ -190,14 +207,14 @@
 
   <main class="container my-5" id="inicio">
 
-    <!-- HISTORIA RESUMIDA Y QUIÉNES SOMOS (2 Columnas del boceto) -->
+    <!-- HISTORIA RESUMIDA Y QUIÉNES SOMOS -->
     <section id="historia-quienes" class="mb-5">
       <div class="row g-4">
         <div class="col-md-6">
           <div class="card card-dark h-100 p-4 shadow">
             <div class="d-flex align-items-center mb-3">
-              <i class="bi bi-book-half fs-3 text-primary me-2"></i>
-              <h3 class="h4 mb-0 fw-bold">Historia resumida</h3>
+              <i class="bi bi-book-half fs-3 text-info me-2"></i>
+              <h3 class="h4 mb-0 fw-bold text-white">Historia resumida</h3>
             </div>
             <p class="text-secondary-emphasis mb-0 leading-relaxed">
               Mariscos "Mar Azul" nace como una empresa familiar orientada a conservar las recetas y la frescura de nuestras caletas costeras. Con años de tradición, preparamos pescados y mariscos con pasión artesanal y sabor casero directo a la mesa.
@@ -207,8 +224,8 @@
         <div class="col-md-6">
           <div class="card card-dark h-100 p-4 shadow">
             <div class="d-flex align-items-center mb-3">
-              <i class="bi bi-people-fill fs-3 text-primary me-2"></i>
-              <h3 class="h4 mb-0 fw-bold">Quiénes Somos</h3>
+              <i class="bi bi-people-fill fs-3 text-info me-2"></i>
+              <h3 class="h4 mb-0 fw-bold text-white">Quiénes Somos</h3>
             </div>
             <p class="text-secondary-emphasis mb-0 leading-relaxed">
               Somos un equipo de cocineros dedicados al procesamiento y elaboración de productos del mar de primera calidad. Seleccionamos el mejor pescado fresco del día para brindar una experiencia marina insuperable.
@@ -218,20 +235,18 @@
       </div>
     </section>
 
-    <!-- CARRUSEL DE IMÁGENES CON TUS FOTOS LOCALES -->
+    <!-- CARRUSEL DE IMÁGENES -->
     <section id="carrusel-seccion" class="mb-5">
       <div class="d-flex justify-content-between align-items-end mb-3">
         <div>
           <span class="text-uppercase fw-bold text-info small">Carta Marina</span>
-          <h2 class="h3 fw-bold mb-0">Carrusel de imágenes con los productos</h2>
+          <h2 class="h3 fw-bold mb-0 text-white">Carrusel de imágenes con los productos</h2>
         </div>
       </div>
 
       <div class="card card-dark overflow-hidden shadow">
-        <!-- Carrusel Nativo Bootstrap 5 -->
         <div id="carruselMarAzul" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
           
-          <!-- Indicadores -->
           <div class="carousel-indicators">
             <button type="button" data-bs-target="#carruselMarAzul" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Foto 1"></button>
             <button type="button" data-bs-target="#carruselMarAzul" data-bs-slide-to="1" aria-label="Foto 2"></button>
@@ -239,52 +254,44 @@
             <button type="button" data-bs-target="#carruselMarAzul" data-bs-slide-to="3" aria-label="Foto 4"></button>
           </div>
 
-          <!-- Diapositivas (Enlazadas a tus 4 fotos locales) -->
           <div class="carousel-inner">
-            
-            <!-- Foto 1: Machas a la Parmesana -->
             <div class="carousel-item active">
               <img src="image_2b6f82.jpg" class="d-block w-100" alt="Machas a la Parmesana">
               <div class="carousel-caption d-none d-md-block text-start">
                 <span class="badge bg-mar-azul mb-2">Especialidad de la Casa</span>
-                <h4 class="fw-bold mb-1">Machas a la Parmesana</h4>
-                <p class="small text-light mb-0">Machas frescas gratinadas al horno con mantequilla, vino blanco y queso parmesano dorado.</p>
+                <h4 class="fw-bold mb-1 text-white">Machas a la Parmesana</h4>
+                <p class="small text-white mb-0">Machas frescas gratinadas al horno con mantequilla, vino blanco y queso parmesano dorado.</p>
               </div>
             </div>
 
-            <!-- Foto 2: Paila Marina -->
             <div class="carousel-item">
               <img src="images.jpg" class="d-block w-100" alt="Paila Marina Tradicional">
               <div class="carousel-caption d-none d-md-block text-start">
                 <span class="badge bg-mar-azul mb-2">Caliente en Greda</span>
-                <h4 class="fw-bold mb-1">Paila Marina Tradicional</h4>
-                <p class="small text-light mb-0">Caldillo marino en greda con choritos, almejas, pescado fresco y condimentos costeños.</p>
+                <h4 class="fw-bold mb-1 text-white">Paila Marina Tradicional</h4>
+                <p class="small text-white mb-0">Caldillo marino en greda con choritos, almejas, pescado fresco y condimentos costeños.</p>
               </div>
             </div>
 
-            <!-- Foto 3: Ceviche Fresco -->
             <div class="carousel-item">
               <img src="images (1).jpg" class="d-block w-100" alt="Ceviche Fresco Preparado">
               <div class="carousel-caption d-none d-md-block text-start">
                 <span class="badge bg-mar-azul mb-2">Pesca del Día</span>
-                <h4 class="fw-bold mb-1">Ceviche Fresco con Camote y Choclo</h4>
-                <p class="small text-light mb-0">Pescado curado al momento en zumo de limón, cebolla morada, rocoto y camote dulce.</p>
+                <h4 class="fw-bold mb-1 text-white">Ceviche Fresco con Camote y Choclo</h4>
+                <p class="small text-white mb-0">Pescado curado al momento en zumo de limón, cebolla morada, rocoto y camote dulce.</p>
               </div>
             </div>
 
-            <!-- Foto 4: Mariscal Frío -->
             <div class="carousel-item">
               <img src="images (3).jpg" class="d-block w-100" alt="Mariscal Frío Surtido">
               <div class="carousel-caption d-none d-md-block text-start">
                 <span class="badge bg-mar-azul mb-2">Surtido de Mariscos</span>
-                <h4 class="fw-bold mb-1">Mariscal Frío del Puerto</h4>
-                <p class="small text-light mb-0">Camarones, aros de calamar, pinzas de jaiba y choritos servidos con vinagreta fresca.</p>
+                <h4 class="fw-bold mb-1 text-white">Mariscal Frío del Puerto</h4>
+                <p class="small text-white mb-0">Camarones, aros de calamar, pinzas de jaiba y choritos servidos con vinagreta fresca.</p>
               </div>
             </div>
-
           </div>
 
-          <!-- Controles de navegación -->
           <button class="carousel-control-prev" type="button" data-bs-target="#carruselMarAzul" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Anterior</span>
@@ -296,68 +303,66 @@
         </div>
       </div>
 
-      <!-- BOTONES DE ACCESO RÁPIDO (Del boceto) -->
+      <!-- BOTONES DE ACCESO RÁPIDO -->
       <div class="row g-3 mt-3">
         <div class="col-6 col-md-3">
-          <a href="#faq-seccion" class="btn card-dark w-100 py-3 d-flex flex-column align-items-center">
+          <a href="#faq-seccion" class="btn card-dark w-100 py-3 d-flex flex-column align-items-center text-decoration-none">
             <i class="bi bi-question-circle fs-4 text-info mb-1"></i>
-            <span class="fw-semibold">Faq</span>
+            <span class="fw-semibold text-white">Faq</span>
           </a>
         </div>
         <div class="col-6 col-md-3">
           <button type="button" class="btn card-dark w-100 py-3 d-flex flex-column align-items-center" onclick="alert('Envíanos tu CV a: contacto@marazul.cl')">
             <i class="bi bi-briefcase fs-4 text-info mb-1"></i>
-            <span class="fw-semibold">Trabaja con Nosotros</span>
+            <span class="fw-semibold text-white">Trabaja con Nosotros</span>
           </button>
         </div>
         <div class="col-6 col-md-3">
-          <a href="#reserva-seccion" class="btn btn-mar-azul w-100 py-3 d-flex flex-column align-items-center">
-            <i class="bi bi-calendar2-check fs-4 mb-1"></i>
-            <span class="fw-semibold">Reserva</span>
+          <a href="#reserva-seccion" class="btn btn-mar-azul w-100 py-3 d-flex flex-column align-items-center text-decoration-none">
+            <i class="bi bi-calendar2-check fs-4 mb-1 text-white"></i>
+            <span class="fw-semibold text-white">Reserva</span>
           </a>
         </div>
         <div class="col-6 col-md-3">
-          <a href="#contacto-seccion" class="btn card-dark w-100 py-3 d-flex flex-column align-items-center">
+          <a href="#contacto-seccion" class="btn card-dark w-100 py-3 d-flex flex-column align-items-center text-decoration-none">
             <i class="bi bi-geo-alt fs-4 text-info mb-1"></i>
-            <span class="fw-semibold">Contactos</span>
+            <span class="fw-semibold text-white">Contactos</span>
           </a>
         </div>
       </div>
     </section>
 
-    <!-- PÁGINA DE RESERVA: Día, Hora y Disponibilidad de Mesas -->
+    <!-- PÁGINA DE RESERVA -->
     <section id="reserva-seccion" class="mb-5 pt-4">
       <div class="mb-3">
         <span class="text-uppercase fw-bold text-info small">Atención en salón</span>
-        <h2 class="h3 fw-bold">Página de Reserva</h2>
+        <h2 class="h3 fw-bold text-white">Página de Reserva</h2>
       </div>
 
       <div class="card card-dark p-4 shadow">
         <div class="row g-4">
-          
-          <!-- Formulario Día y Hora -->
           <div class="col-lg-5">
-            <h4 class="h5 fw-bold mb-3"><i class="bi bi-clock me-2 text-primary"></i>Datos de Reserva</h4>
-            <form id="formReserva" class="d-flex flex-col gap-3">
-              <div class="mb-3">
-                <label for="diaReserva" class="form-label small text-light">Día</label>
-                <input type="date" class="form-control form-control-dark" id="diaReserva" required>
+            <h4 class="h5 fw-bold mb-3 text-white"><i class="bi bi-clock me-2 text-info"></i>Datos de Reserva</h4>
+            <form id="formReserva" class="d-flex flex-column gap-3">
+              <div class="mb-2">
+                <label for="diaReserva" class="form-label small text-white">Día</label>
+                <input type="date" class="form-control form-control-dark text-white" id="diaReserva" required>
               </div>
 
-              <div class="mb-3">
-                <label for="horaReserva" class="form-label small text-light">Hora</label>
-                <select class="form-select form-select-dark" id="horaReserva" required>
-                  <option value="">Selecciona un horario...</option>
-                  <option value="12:30">12:30 PM</option>
-                  <option value="13:30">01:30 PM</option>
-                  <option value="14:30">02:30 PM</option>
-                  <option value="19:30">07:30 PM</option>
-                  <option value="20:30">08:30 PM</option>
-                  <option value="21:30">09:30 PM</option>
+              <div class="mb-2">
+                <label for="horaReserva" class="form-label small text-white">Hora</label>
+                <select class="form-select form-select-dark text-white" id="horaReserva" required>
+                  <option value="" class="text-white">Selecciona un horario...</option>
+                  <option value="12:30" class="text-white">12:30 PM</option>
+                  <option value="13:30" class="text-white">01:30 PM</option>
+                  <option value="14:30" class="text-white">02:30 PM</option>
+                  <option value="19:30" class="text-white">07:30 PM</option>
+                  <option value="20:30" class="text-white">08:30 PM</option>
+                  <option value="21:30" class="text-white">09:30 PM</option>
                 </select>
               </div>
 
-              <div class="p-3 rounded bg-black border border-secondary mb-3">
+              <div class="p-3 rounded bg-black border border-secondary mb-2">
                 <small class="text-secondary d-block">Mesa Elegida:</small>
                 <strong id="mesaTexto" class="text-info fs-6">Ninguna (Haz clic en el mapa)</strong>
               </div>
@@ -368,10 +373,9 @@
             </form>
           </div>
 
-          <!-- Disponibilidad de Mesas (Interactivo) -->
           <div class="col-lg-7">
             <div class="d-flex justify-content-between align-items-center mb-3">
-              <h4 class="h5 fw-bold mb-0"><i class="bi bi-grid-3x3-gap me-2 text-primary"></i>Disponibilidad de mesas</h4>
+              <h4 class="h5 fw-bold mb-0 text-white"><i class="bi bi-grid-3x3-gap me-2 text-info"></i>Disponibilidad de mesas</h4>
               <div class="small d-flex gap-2">
                 <span class="badge bg-secondary">Disponible</span>
                 <span class="badge bg-danger">Ocupada</span>
@@ -379,29 +383,21 @@
               </div>
             </div>
 
-            <!-- Mapa de mesas -->
-            <div class="row g-3" id="contenedorMesas">
-              <!-- Renderizado por JS -->
-            </div>
+            <div class="row g-3" id="contenedorMesas"></div>
           </div>
-
         </div>
       </div>
     </section>
 
-    <!-- FAQ + CONTACTO + CAJA DE COMENTARIOS (Boceto derecho) -->
+    <!-- FAQ + CONTACTO + CAJA DE COMENTARIOS -->
     <section id="faq-contacto-seccion" class="pt-4">
       <div class="row g-4">
         
-        <!-- FAQ (Q1, R1, Q2, R2) y Caja de Comentarios -->
         <div class="col-lg-7">
-          
-          <!-- Acordeón FAQ -->
           <div id="faq-seccion" class="mb-4">
-            <h3 class="h4 fw-bold mb-3"><i class="bi bi-chat-left-dots me-2 text-primary"></i>Faq (Preguntas Frecuentes)</h3>
+            <h3 class="h4 fw-bold mb-3 text-white"><i class="bi bi-chat-left-dots me-2 text-info"></i>Faq (Preguntas Frecuentes)</h3>
             
             <div class="accordion accordion-dark" id="faqAccordion">
-              <!-- Q1 / R1 -->
               <div class="accordion-item">
                 <h2 class="accordion-header">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
@@ -410,12 +406,11 @@
                 </h2>
                 <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                   <div class="accordion-body">
-                    <strong>R1:</strong> Sí, trabajamos con proveedores certificados y pescadores de caleta locales a diario, garantizando productos del mar frescos.
+                    <strong class="text-white">R1:</strong> Sí, trabajamos con proveedores certificados y pescadores de caleta locales a diario, garantizando productos del mar frescos.
                   </div>
                 </div>
               </div>
 
-              <!-- Q2 / R2 -->
               <div class="accordion-item">
                 <h2 class="accordion-header">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
@@ -424,12 +419,11 @@
                 </h2>
                 <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                   <div class="accordion-body">
-                    <strong>R2:</strong> Sí, puedes reservar mesas contiguas o coordinar directo a través de nuestro teléfono de contacto.
+                    <strong class="text-white">R2:</strong> Sí, puedes reservar mesas contiguas o coordinar directo a través de nuestro teléfono de contacto.
                   </div>
                 </div>
               </div>
 
-              <!-- Q3 / R3 -->
               <div class="accordion-item">
                 <h2 class="accordion-header">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
@@ -438,16 +432,15 @@
                 </h2>
                 <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                   <div class="accordion-body">
-                    <strong>R3:</strong> Sí, disponemos de empaques térmicos aptos para ceviches, pailas y pescados fritos.
+                    <strong class="text-white">R3:</strong> Sí, disponemos de empaques térmicos aptos para ceviches, pailas y pescados fritos.
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Caja de Comentarios -->
           <div class="card card-dark p-4 shadow">
-            <h4 class="h5 fw-bold mb-2"><i class="bi bi-chat-square-quote me-2 text-primary"></i>Caja de comentarios</h4>
+            <h4 class="h5 fw-bold mb-2 text-white"><i class="bi bi-chat-square-quote me-2 text-info"></i>Caja de comentarios</h4>
             <p class="small text-secondary mb-3">Déjanos tu opinión o sugerencia sobre nuestro servicio</p>
 
             <form id="formComentarios" class="mb-4">
@@ -467,58 +460,54 @@
               </button>
             </form>
 
-            <!-- Lista de comentarios -->
             <div id="listaComentarios" class="d-flex flex-column gap-2" style="max-height: 200px; overflow-y: auto;">
               <div class="p-2 rounded bg-black border border-secondary">
                 <div class="d-flex justify-content-between small text-info fw-bold">
                   <span>Juan Soto</span>
                   <span class="text-secondary small">Ayer</span>
                 </div>
-                <p class="small text-light mb-0 mt-1">Excelente paila marina, con sabor auténtico y bien servida.</p>
+                <p class="small text-white mb-0 mt-1">Excelente paila marina, con sabor auténtico y bien servida.</p>
               </div>
             </div>
           </div>
-
         </div>
 
-        <!-- Contacto (Boceto: Menú, Contacto, Calle 123, Santiago) -->
         <div class="col-lg-5" id="contacto-seccion">
           <div class="card card-dark p-4 shadow h-100">
             <div class="d-flex align-items-center mb-3">
-              <i class="bi bi-telephone-inbound fs-3 text-primary me-2"></i>
-              <h3 class="h4 fw-bold mb-0">Contacto</h3>
+              <i class="bi bi-telephone-inbound fs-3 text-info me-2"></i>
+              <h3 class="h4 fw-bold mb-0 text-white">Contacto</h3>
             </div>
             
             <p class="text-secondary small mb-4">Estamos a tu disposición para consultas y reservas telefónicas.</p>
 
             <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
               <li class="d-flex align-items-start">
-                <i class="bi bi-geo-alt-fill text-primary fs-5 me-3"></i>
+                <i class="bi bi-geo-alt-fill text-info fs-5 me-3"></i>
                 <div>
                   <strong class="d-block text-white">Dirección:</strong>
-                  <!-- Escrito tal como estaba en el boceto -->
-                  <span class="text-light">Calle 123, Santiago</span>
+                  <span class="text-white">Calle 123, Santiago</span>
                 </div>
               </li>
               <li class="d-flex align-items-start">
-                <i class="bi bi-telephone-fill text-primary fs-5 me-3"></i>
+                <i class="bi bi-telephone-fill text-info fs-5 me-3"></i>
                 <div>
                   <strong class="d-block text-white">Teléfonos:</strong>
-                  <span class="text-light">+56 2 2345 6789 / +56 9 8765 4321</span>
+                  <span class="text-white">+56 2 2345 6789 / +56 9 8765 4321</span>
                 </div>
               </li>
               <li class="d-flex align-items-start">
-                <i class="bi bi-envelope-fill text-primary fs-5 me-3"></i>
+                <i class="bi bi-envelope-fill text-info fs-5 me-3"></i>
                 <div>
                   <strong class="d-block text-white">Correo Electrónico:</strong>
-                  <span class="text-light">contacto@marazul.cl</span>
+                  <span class="text-white">contacto@marazul.cl</span>
                 </div>
               </li>
               <li class="d-flex align-items-start">
-                <i class="bi bi-clock-fill text-primary fs-5 me-3"></i>
+                <i class="bi bi-clock-fill text-info fs-5 me-3"></i>
                 <div>
                   <strong class="d-block text-white">Horario de Atención:</strong>
-                  <span class="text-light">Martes a Domingo: 12:00 a 22:30 hrs</span>
+                  <span class="text-white">Martes a Domingo: 12:00 a 22:30 hrs</span>
                 </div>
               </li>
             </ul>
@@ -533,17 +522,15 @@
   <!-- FOOTER -->
   <footer class="py-4 border-top border-secondary mt-5 text-center text-secondary small">
     <div class="container">
-      <p class="mb-0">&copy; 2026 Mariscos "Mar Azul" - Pescados y mariscos preparados. Calle 123, Santiago.</p>
+      <p class="mb-0 text-secondary">&copy; 2026 Mariscos "Mar Azul" - Pescados y mariscos preparados. Calle 123, Santiago.</p>
     </div>
   </footer>
 
-  <!-- 2. Bootstrap JS Local (con CDN de respaldo) -->
+  <!-- Bootstrap JS Local (con CDN de respaldo) -->
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- LÓGICA DE INTERACCIÓN (Mesas y Comentarios) -->
   <script>
-    // Inicializar carrusel de Bootstrap
     document.addEventListener('DOMContentLoaded', function () {
       const carruselEl = document.getElementById('carruselMarAzul');
       if (window.bootstrap) {
@@ -554,7 +541,6 @@
       }
     });
 
-    // Datos y Renderizado de Mesas
     const listaMesas = [
       { id: 'Mesa 1', cap: 2, ocupada: false },
       { id: 'Mesa 2', cap: 4, ocupada: false },
@@ -601,7 +587,6 @@
     }
     renderizarMesas();
 
-    // Formulario de Reserva
     document.getElementById('formReserva').addEventListener('submit', function(e) {
       e.preventDefault();
       if (!mesaSeleccionada) {
@@ -620,7 +605,6 @@
       renderizarMesas();
     });
 
-    // Formulario de Comentarios
     document.getElementById('formComentarios').addEventListener('submit', function(e) {
       e.preventDefault();
       const nombre = document.getElementById('comNombre').value;
@@ -633,7 +617,7 @@
           <span>${nombre}</span>
           <span class="text-secondary small">Ahora</span>
         </div>
-        <p class="small text-light mb-0 mt-1">${texto}</p>
+        <p class="small text-white mb-0 mt-1">${texto}</p>
       `;
 
       const lista = document.getElementById('listaComentarios');
