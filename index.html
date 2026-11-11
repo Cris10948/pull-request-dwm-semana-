@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-bs-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -109,7 +109,7 @@
     .mesa-btn.ocupada {
       background-color: #2a1515;
       border-color: #5c1d1d;
-      color: #777;
+      color: #f2b8b8;
       cursor: not-allowed;
     }
 
@@ -144,8 +144,34 @@
     }
     .accordion-dark .accordion-body {
       background-color: #1b1b1b;
-      color: #ccc;
+      color: #f1f3f5;
     }
+
+    /* ===== Contraste: texto legible sobre fondos oscuros ===== */
+    :root { --color-texto-suave: #dfe4ea; }
+
+    .text-secondary,
+    .text-secondary-emphasis,
+    .text-muted,
+    footer,
+    footer .text-secondary {
+      color: var(--color-texto-suave) !important;
+    }
+    .text-primary { color: #7db3ff !important; }          /* iconos y acentos azules */
+    .text-info    { color: #5fe0f7 !important; }
+
+    .mesa-btn small,
+    .mesa-btn.ocupada small { color: var(--color-texto-suave) !important; }
+
+    .form-control-dark::placeholder { color: #c3cad1 !important; opacity: 1; }
+    .form-control-dark, .form-select-dark { color-scheme: dark; }
+    .form-label { color: #ffffff !important; }
+
+    /* Los .btn pasan a texto oscuro al hacer hover: se fuerza blanco en las tarjetas-botón */
+    .btn.card-dark,
+    .btn.card-dark:hover,
+    .btn.card-dark:focus,
+    .btn.card-dark:active { color: #ffffff; }
   </style>
 </head>
 <body>
@@ -199,7 +225,7 @@
               <i class="bi bi-book-half fs-3 text-primary me-2"></i>
               <h3 class="h4 mb-0 fw-bold">Historia resumida</h3>
             </div>
-            <p class="text-secondary-emphasis mb-0 leading-relaxed">
+            <p class="text-light mb-0 leading-relaxed">
               Mariscos "Mar Azul" nace como una empresa familiar orientada a conservar las recetas y la frescura de nuestras caletas costeras. Con años de tradición, preparamos pescados y mariscos con pasión artesanal y sabor casero directo a la mesa.
             </p>
           </div>
@@ -210,7 +236,7 @@
               <i class="bi bi-people-fill fs-3 text-primary me-2"></i>
               <h3 class="h4 mb-0 fw-bold">Quiénes Somos</h3>
             </div>
-            <p class="text-secondary-emphasis mb-0 leading-relaxed">
+            <p class="text-light mb-0 leading-relaxed">
               Somos un equipo de cocineros dedicados al procesamiento y elaboración de productos del mar de primera calidad. Seleccionamos el mejor pescado fresco del día para brindar una experiencia marina insuperable.
             </p>
           </div>
